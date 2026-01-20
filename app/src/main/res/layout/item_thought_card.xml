@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/thoughtCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    style="@style/Widget.SecondBrain.Card"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header: Category dot + Date + Pin indicator -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Category Color Dot -->
+            <View
+                android:id="@+id/categoryDot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/circle_shape"/>
+
+            <!-- Category Text -->
+            <TextView
+                android:id="@+id/categoryTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:text="Decision"/>
+
+            <!-- Pin Indicator -->
+            <TextView
+                android:id="@+id/pinnedIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pinned"
+                android:textColor="@color/primary_soft_blue"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:background="@drawable/rounded_bg"
+                android:visibility="gone"/>
+
+            <!-- Date -->
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:text="Today"/>
+
+        </LinearLayout>
+
+        <!-- Title (if exists) -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/text_off_white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:visibility="gone"/>
+
+        <!-- Main Thought Text (truncated) -->
+        <TextView
+            android:id="@+id/thoughtTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_off_white"
+            android:textSize="15sp"
+            android:lineSpacingMultiplier="1.4"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="This is a sample thought that might be longer..."/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

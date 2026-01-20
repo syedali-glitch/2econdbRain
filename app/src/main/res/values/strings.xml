@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Second Brain Lite</string>
+    
+    <!-- Main Screen -->
+    <string name="header_your_mind">Your Mind, Today</string>
+    <string name="subtext_what_learned">What did you learn?</string>
+    <string name="search_hint">What are you trying to remember?</string>
+    <string name="no_thoughts_yet">No thoughts yet. Tap + to add your first one.</string>
+    
+    <!-- Add/Edit Thought -->
+    <string name="add_thought_title">New Thought</string>
+    <string name="edit_thought_title">Edit Thought</string>
+    <string name="hint_title">Title (optional)</string>
+    <string name="hint_main_thought">What did you learn or decide?</string>
+    <string name="category_label">Category</string>
+    <string name="category_decision">Decision</string>
+    <string name="category_lesson">Lesson</string>
+    <string name="category_reflection">Reflection</string>
+    <string name="save_thought">Save Thought</string>
+    <string name="thought_required">Please enter your thought</string>
+    <string name="thought_saved">Thought saved</string>
+    
+    <!-- View Thought -->
+    <string name="view_thought_title">Thought</string>
+    <string name="edit">Edit</string>
+    
+    <!-- Bottom Sheet Actions -->
+    <string name="action_view">View Thought</string>
+    <string name="action_pin">Pin</string>
+    <string name="action_unpin">Unpin</string>
+    <string name="action_delete">Delete</string>
+    
+    <!-- Delete Confirmation -->
+    <string name="delete_title">Let this go?</string>
+    <string name="delete_message">This thought will be permanently deleted.</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Pin Limit -->
+    <string name="pin_limit_reached">Maximum 5 thoughts can be pinned</string>
+    <string name="pin_limit_watch_ad">Watch an ad to pin one more?</string>
+    <string name="watch_ad">Watch Ad</string>
+    <string name="thought_pinned">Thought pinned</string>
+    <string name="thought_unpinned">Thought unpinned</string>
+    
+    <!-- Ads -->
+    <string name="remove_ads_title">Remove Ads</string>
+    <string name="remove_ads_description">Enjoy ad-free experience for $1.99</string>
+    <string name="purchase">Purchase</string>
+    <string name="ads_removed">Ads removed successfully!</string>
+    <string name="purchase_failed">Purchase failed. Please try again.</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Capture Your Decisions</string>
+    <string name="onboarding_desc_1">Save important thoughts, lessons, and decisions with the reasoning behind them.</string>
+    <string name="onboarding_title_2">Add a Thought</string>
+    <string name="onboarding_desc_2">Tap the + button anytime to quickly capture what matters.</string>
+    <string name="onboarding_title_3">View, Pin, Organize</string>
+    <string name="onboarding_desc_3">Tap any thought to view, pin your favorites, or delete what you no longer need.</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    
+    <!-- General -->
+    <string name="pinned">Pinned</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+</resources>

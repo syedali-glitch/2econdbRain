@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark_navy"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/headerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_thought_title"
+            android:textColor="@color/text_off_white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Title Input (Optional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.SecondBrain.TextInputLayout"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/titleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_title"
+                android:textColor="@color/text_off_white"
+                android:textColorHint="@color/text_secondary"
+                android:maxLines="1"
+                android:imeOptions="actionNext"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Main Thought Input (Required) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.SecondBrain.TextInputLayout"
+            android:layout_marginBottom="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/thoughtEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_main_thought"
+                android:textColor="@color/text_off_white"
+                android:textColorHint="@color/text_secondary"
+                android:minLines="5"
+                android:maxLines="10"
+                android:gravity="top"
+                android:inputType="textMultiLine|textCapSentences"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Category Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_label"
+            android:textColor="@color/text_off_white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Category Selection -->
+        <RadioGroup
+            android:id="@+id/categoryRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+
+            <RadioButton
+                android:id="@+id/decisionRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_decision"
+                android:textColor="@color/text_off_white"
+                android:textSize="15sp"
+                android:checked="true"
+                android:buttonTint="@color/category_decision"
+                android:paddingVertical="8dp"/>
+
+            <RadioButton
+                android:id="@+id/lessonRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_lesson"
+                android:textColor="@color/text_off_white"
+                android:textSize="15sp"
+                android:buttonTint="@color/category_lesson"
+                android:paddingVertical="8dp"/>
+
+            <RadioButton
+                android:id="@+id/reflectionRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_reflection"
+                android:textColor="@color/text_off_white"
+                android:textSize="15sp"
+                android:buttonTint="@color/category_reflection"
+                android:paddingVertical="8dp"/>
+
+        </RadioGroup>
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/save_thought"
+            style="@style/Widget.SecondBrain.Button"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</ScrollView>

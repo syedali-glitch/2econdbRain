@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude database for privacy -->
+    <exclude domain="database" path="thoughts.db" />
+    <exclude domain="database" path="thoughts.db-shm" />
+    <exclude domain="database" path="thoughts.db-wal" />
+</full-backup-content>

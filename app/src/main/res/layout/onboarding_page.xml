@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:gravity="center"
+    android:background="@color/background_dark_navy">
+
+    <!-- Icon Placeholder (could use drawable) -->
+    <View
+        android:id="@+id/iconView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/circle_shape"/>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_title_1"
+        android:textColor="@color/text_off_white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_desc_1"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.4"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="60dp"/>
+
+    <!-- Page indicators will be added programmatically -->
+    <LinearLayout
+        android:id="@+id/indicatorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Buttons Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Skip Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/skipButton"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:text="@string/skip"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Next/Get Started Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="56dp"
+            android:text="@string/next"
+            style="@style/Widget.SecondBrain.Button"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
