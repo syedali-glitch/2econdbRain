@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  
+    <!-- Brain Path with Gradient -->
+    <path
+        android:pathData="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.74 6.9,18.33C7.5,18.73 8.23,19 9,19H9.09C9.04,19 9,19 8.97,19H9V21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V19.92C15,19.95 15,19.97 15,20C17.06,19.89 18.91,18.92 20.25,17.38C22,15.7 23,13.43 23,11A9,9 0 0,0 14,2V2M11.5,4C12.33,4 13,4.67 13,5.5C13,6.33 12.33,7 11.5,7C10.67,7 10,6.33 10,5.5C10,4.67 10.67,4 11.5,4M6.5,11C7.33,11 8,11.67 8,12.5C8,13.33 7.33,14 6.5,14C5.67,14 5,13.33 5,12.5C5,11.67 5.67,11 6.5,11M16.5,14C17.33,14 18,13.33 18,12.5C18,11.67 17.33,11 16.5,11C15.67,11 15,11.67 15,12.5C15,13.33 15.67,14 16.5,14M12.5,15C11.67,15 11,15.67 11,16.5C11,17.33 11.67,18 12.5,18C13.33,18 14,17.33 14,16.5C14,15.67 13.33,15 12.5,15Z">
+        <aapt:attr name="android:fillColor">
+            <gradient 
+                android:startX="3" 
+                android:startY="2" 
+                android:endX="23" 
+                android:endY="22" 
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF6366F1" /> <!-- Electric Indigo -->
+                <item android:offset="0.5" android:color="#FF8B5CF6" /> <!-- Vivid Violet -->
+                <item android:offset="1.0" android:color="#FF3B82F6" /> <!-- Blue -->
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>
