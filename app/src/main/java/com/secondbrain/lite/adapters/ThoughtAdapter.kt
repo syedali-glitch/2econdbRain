@@ -1,9 +1,9 @@
 package com.secondbrain.lite.adapters
 
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -33,7 +33,7 @@ class ThoughtAdapter(
         private val onThoughtClick: (Thought) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
 
-        private val categoryDot: View = itemView.findViewById(R.id.categoryDot)
+        private val categoryIcon: ImageView = itemView.findViewById(R.id.categoryIcon)
         private val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
         private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
@@ -41,17 +41,15 @@ class ThoughtAdapter(
         private val pinnedIndicator: TextView = itemView.findViewById(R.id.pinnedIndicator)
 
         fun bind(thought: Thought) {
-            // Set category
+            // Set category with custom icon
             categoryTextView.text = thought.category
-            val categoryColor = when (thought.category) {
-                "Decision" -> R.color.category_decision
-                "Lesson" -> R.color.category_lesson
-                "Reflection" -> R.color.category_reflection
-                else -> R.color.primary_soft_blue
+            val categoryIconRes = when (thought.category) {
+                "Decision" -> R.drawable.ic_category_decision
+                "Lesson" -> R.drawable.ic_category_lesson
+                "Reflection" -> R.drawable.ic_category_reflection
+                else -> R.drawable.ic_category_decision
             }
-            (categoryDot.background as? GradientDrawable)?.setColor(
-                ContextCompat.getColor(itemView.context, categoryColor)
-            )
+            categoryIcon.setImageResource(categoryIconRes)
 
             // Set date
             dateTextView.text = formatDate(thought.date)

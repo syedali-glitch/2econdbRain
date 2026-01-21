@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.secondbrain.lite.adapters.ThoughtAdapter
@@ -36,6 +37,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var emptyStateContainer: LinearLayout
     private lateinit var emptyStateTextView: TextView
     private lateinit var bannerAdContainer: FrameLayout
+    
+    // Category filter chips
+    private lateinit var chipAll: Chip
+    private lateinit var chipDecision: Chip
+    private lateinit var chipLesson: Chip
+    private lateinit var chipReflection: Chip
+    
+    private var currentFilter: String = "All"
     
     private lateinit var thoughtAdapter: ThoughtAdapter
     private lateinit var database: AppDatabase
@@ -72,6 +81,12 @@ class MainActivity : AppCompatActivity() {
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
         bannerAdContainer = findViewById(R.id.bannerAdContainer)
         
+        // Initialize category chips
+        chipAll = findViewById(R.id.chipAll)
+        chipDecision = findViewById(R.id.chipDecision)
+        chipLesson = findViewById(R.id.chipLesson)
+        chipReflection = findViewById(R.id.chipReflection)
+        
         // Setup RecyclerView
         thoughtAdapter = ThoughtAdapter { thought ->
             showThoughtActionsBottomSheet(thought)
@@ -89,6 +104,9 @@ class MainActivity : AppCompatActivity() {
                 searchThoughts(text.toString())
             }
         }
+        
+        // Setup category filter chips with animations
+        setupCategoryFilters()
         
         // Setup FAB with animations
         addThoughtFab.setOnTouchListener { view, event ->
@@ -154,6 +172,72 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             database.thoughtDao().searchThoughts(query).collectLatest { thoughts ->
                 thoughtAdapter.submitList(thoughts)
+            }
+        }
+    }
+
+    private fun setupCategoryFilters() {
+        chipAll.setOnClickListener {
+            currentFilter = "All"
+            animateChipSelection(chipAll)
+            observeAllThoughts()
+        }
+        
+        chipDecision.setOnClickListener {
+            currentFilter = "Decision"
+            animateChipSelection(chipDecision)
+            observeFilteredThoughts("Decision")
+        }
+        
+        chipLesson.setOnClickListener {
+            currentFilter = "Lesson"
+            animateChipSelection(chipLesson)
+            observeFilteredThoughts("Lesson")
+        }
+        
+        chipReflection.setOnClickListener {
+            currentFilter = "Reflection"
+            animateChipSelection(chipReflection)
+            observeFilteredThoughts("Reflection")
+        }
+    }
+    
+    private fun animateChipSelection(selectedChip: Chip) {
+        // Scale animation for selected chip
+        selectedChip.animate()
+            .scaleX(1.05f)
+            .scaleY(1.05f)
+            .setDuration(150)
+            .withEndAction {
+                selectedChip.animate()
+                    .scaleX(1.0f)
+                    .scaleY(1.0f)
+                    .setDuration(150)
+                    .start()
+            }
+            .start()
+    }
+    
+    private fun observeFilteredThoughts(category: String) {
+        lifecycleScope.launch {
+            database.thoughtDao().getThoughtsByCategory(category).collectLatest { thoughts ->
+                thoughtAdapter.submitList(thoughts)
+                
+                // Show/hide empty state with animation
+                if (thoughts.isEmpty()) {
+                    thoughtsRecyclerView.visibility = android.view.View.GONE
+                    emptyStateContainer.apply {
+                        visibility = android.view.View.VISIBLE
+                        alpha = 0f
+                        animate()
+                            .alpha(1f)
+                            .setDuration(300)
+                            .start()
+                    }
+                } else {
+                    emptyStateContainer.visibility = android.view.View.GONE
+                    thoughtsRecyclerView.visibility = android.view.View.VISIBLE
+                }
             }
         }
     }

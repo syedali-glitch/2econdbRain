@@ -75,6 +75,95 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Category Filter Chips - Glass Design -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/categoryFilterChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:singleSelection="false"
+                    app:chipSpacing="12dp">
+
+                    <!-- All Categories Chip -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✨ All"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/card_background"
+                        app:chipStrokeColor="@color/primary_cyan"
+                        app:chipStrokeWidth="2dp"
+                        app:chipCornerRadius="14dp"
+                        app:chipMinHeight="44dp"
+                        app:chipStartPadding="16dp"
+                        app:chipEndPadding="16dp"
+                        android:checked="true"
+                        style="@style/Widget.Material3.Chip.Filter"/>
+
+                    <!-- Decision Chip -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipDecision"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="◆ Decision"
+                        android:textColor="@color/category_decision"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/card_background"
+                        app:chipStrokeColor="@color/category_decision"
+                        app:chipStrokeWidth="1.5dp"
+                        app:chipCornerRadius="14dp"
+                        app:chipMinHeight="44dp"
+                        app:chipStartPadding="16dp"
+                        app:chipEndPadding="16dp"
+                        style="@style/Widget.Material3.Chip.Filter"/>
+
+                    <!-- Lesson Chip -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipLesson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="◈ Lesson"
+                        android:textColor="@color/category_lesson"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/card_background"
+                        app:chipStrokeColor="@color/category_lesson"
+                        app:chipStrokeWidth="1.5dp"
+                        app:chipCornerRadius="14dp"
+                        app:chipMinHeight="44dp"
+                        app:chipStartPadding="16dp"
+                        app:chipEndPadding="16dp"
+                        style="@style/Widget.Material3.Chip.Filter"/>
+
+                    <!-- Reflection Chip -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipReflection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★ Reflection"
+                        android:textColor="@color/category_reflection"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/card_background"
+                        app:chipStrokeColor="@color/category_reflection"
+                        app:chipStrokeWidth="1.5dp"
+                        app:chipCornerRadius="14dp"
+                        app:chipMinHeight="44dp"
+                        app:chipStartPadding="16dp"
+                        app:chipEndPadding="16dp"
+                        style="@style/Widget.Material3.Chip.Filter"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
         </LinearLayout>
 
         <!-- Timeline RecyclerView with better spacing -->
