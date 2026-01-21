@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Gradient Colors (Purple to Cyan theme) -->
-    <color name="gradient_start">#8B5CF6</color>       <!-- Vibrant Purple -->
-    <color name="gradient_mid">#6366F1</color>         <!-- Indigo -->
-    <color name="gradient_end">#06B6D4</color>         <!-- Cyan -->
-    
-    <!-- Background Colors -->
-    <color name="background_dark_navy">#0A0E27</color>  <!-- Deeper, richer background -->
-    <color name="background_gradient_start">#1A1F3A</color>
-    <color name="background_gradient_end">#0F1729</color>
-    
+    <!-- Primary Gradient Colors (Psychological Retention) -->
+    <color name="gradient_start">#6366F1</color>       <!-- Electric Indigo -->
+    <color name="gradient_mid">#8B5CF6</color>         <!-- Vivid Violet -->
+    <color name="gradient_end">#EC4899</color>         <!-- Hot Pink -->
+
+    <!-- Background Colors (Deep & Immersive) -->
+    <color name="background_dark_navy">#0F172A</color>  <!-- Slate 900: Deep, serious base -->
+    <color name="background_gradient_start">#1E293B</color> <!-- Slate 800 -->
+    <color name="background_gradient_end">#020617</color>   <!-- Slate 950 -->
+
     <!-- Card Colors with Glassmorphism -->
-    <color name="card_background">#1E2A47</color>       <!-- Translucent glass effect -->
-    <color name="card_background_elevated">#2A3650</color>
-    <color name="card_stroke">#3B4668</color>           <!-- Subtle border -->
-    
-    <!-- Text Colors -->
-    <color name="text_off_white">#F8FAFC</color>        <!-- Pure white for headers -->
-    <color name="text_primary">#E2E8F0</color>          <!-- Slightly off-white -->
-    <color name="text_secondary">#94A3B8</color>        <!-- Muted gray-blue -->
-    <color name="text_tertiary">#64748B</color>         <!-- Even more muted -->
-    
-    <!-- Accent Colors (More Vibrant) -->
-    <color name="primary_soft_blue">#3B82F6</color>     <!-- Brighter blue -->
-    <color name="primary_cyan">#22D3EE</color>          <!-- Electric cyan -->
-    <color name="secondary_green">#10B981</color>       <!-- Emerald green -->
-    <color name="accent_purple">#A78BFA</color>         <!-- Light purple -->
-    <color name="accent_pink">#F472B6</color>           <!-- Hot pink -->
-    <color name="delete_red">#F43F5E</color>            <!-- Rose red -->
-    
+    <color name="card_background">#1E293B</color>       <!-- Matches bg start for seamless look -->
+    <color name="card_background_elevated">#334155</color> <!-- Slate 700 -->
+    <color name="card_stroke">#334155</color>           <!-- Subtle border -->
+
+    <!-- Text Colors (High Contrast) -->
+    <color name="text_off_white">#F8FAFC</color>        <!-- Slate 50: Purest white for readability -->
+    <color name="text_primary">#E2E8F0</color>          <!-- Slate 200 -->
+    <color name="text_secondary">#94A3B8</color>        <!-- Slate 400: Relaxed reading -->
+    <color name="text_tertiary">#64748B</color>         <!-- Slate 500 -->
+
+    <!-- Accent Colors (Dopamine Triggers) -->
+    <color name="primary_soft_blue">#3B82F6</color>     <!-- Blue 500: Trust -->
+    <color name="primary_cyan">#06B6D4</color>          <!-- Cyan 500: Clarity -->
+    <color name="secondary_green">#10B981</color>       <!-- Emerald 500: Success/Growth -->
+    <color name="accent_purple">#A855F7</color>         <!-- Purple 500: Creativity -->
+    <color name="accent_pink">#EC4899</color>           <!-- Pink 500: Passion -->
+    <color name="delete_red">#EF4444</color>            <!-- Red 500: Warning -->
+
     <!-- Category Colors (Vibrant & Distinct) -->
-    <color name="category_decision">#F59E0B</color>     <!-- Amber -->
-    <color name="category_lesson">#8B5CF6</color>       <!-- Purple -->
-    <color name="category_reflection">#EC4899</color>   <!-- Pink -->
-    
+    <color name="category_decision">#F59E0B</color>     <!-- Amber 500 -->
+    <color name="category_lesson">#8B5CF6</color>       <!-- Violet 500 -->
+    <color name="category_reflection">#EC4899</color>   <!-- Pink 500 -->
+
     <!-- Divider & UI Elements -->
-    <color name="divider_color">#2D3748</color>
-    <color name="ripple_color">#4A5568</color>
-    
+    <color name="divider_color">#1E293B</color>
+    <color name="ripple_color">#475569</color>          <!-- Slate 600 -->
+
     <!-- System colors -->
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
-    
-    <!-- Transparent overlay for glassmorphism -->
-    <color name="glass_overlay">#1AFFFFFF</color>  <!-- 10% white -->
-    <color name="glass_overlay_strong">#33FFFFFF</color>  <!-- 20% white -->
+
+    <!-- Glassmorphism Overlays -->
+    <color name="glass_overlay">#1AFFFFFF</color>       <!-- 10% white -->
+    <color name="glass_overlay_medium">#26FFFFFF</color> <!-- 15% white -->
+    <color name="glass_overlay_strong">#4DFFFFFF</color> <!-- 30% white -->
+    <color name="glass_shadow">#40000000</color>        <!-- 25% black -->
 </resources>
 

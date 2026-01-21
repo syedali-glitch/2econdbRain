@@ -26,6 +26,18 @@ class ThoughtAdapter(
 
     override fun onBindViewHolder(holder: ThoughtViewHolder, position: Int) {
         holder.bind(getItem(position))
+        setAnimation(holder.itemView, position)
+    }
+
+    private var lastPosition = -1
+
+    private fun setAnimation(viewToAnimate: View, position: Int) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            val animation = android.view.animation.AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.slide_in_up)
+            viewToAnimate.startAnimation(animation)
+            lastPosition = position
+        }
     }
 
     class ThoughtViewHolder(
@@ -34,22 +46,33 @@ class ThoughtAdapter(
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val categoryIcon: ImageView = itemView.findViewById(R.id.categoryIcon)
+        private val categoryGlow: View = itemView.findViewById(R.id.categoryGlow) // Added glow view
         private val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
         private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val thoughtTextView: TextView = itemView.findViewById(R.id.thoughtTextView)
-        private val pinnedIndicator: TextView = itemView.findViewById(R.id.pinnedIndicator)
+        private val pinnedIndicator: ImageView = itemView.findViewById(R.id.pinnedIndicator) // Changed to ImageView
 
         fun bind(thought: Thought) {
-            // Set category with custom icon
+            // Set category with custom icon and color
             categoryTextView.text = thought.category
-            val categoryIconRes = when (thought.category) {
-                "Decision" -> R.drawable.ic_category_decision
-                "Lesson" -> R.drawable.ic_category_lesson
-                "Reflection" -> R.drawable.ic_category_reflection
-                else -> R.drawable.ic_category_decision
+            
+            val (iconRes, colorRes) = when (thought.category) {
+                "Decision" -> Pair(R.drawable.ic_category_decision, R.color.category_decision)
+                "Lesson" -> Pair(R.drawable.ic_category_lesson, R.color.category_lesson)
+                "Reflection" -> Pair(R.drawable.ic_category_reflection, R.color.category_reflection)
+                else -> Pair(R.drawable.ic_category_decision, R.color.category_decision)
             }
-            categoryIcon.setImageResource(categoryIconRes)
+            
+            categoryIcon.setImageResource(iconRes)
+            categoryIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.text_off_white)) // Make icon white
+            
+            // Tint the glow background
+            categoryGlow.backgroundTintList = androidx.core.content.ContextCompat.getColorStateList(itemView.context, colorRes)
+            categoryGlow.alpha = 0.2f // Subtle glow
+            
+            // Helper for color logic
+            categoryTextView.setTextColor(ContextCompat.getColor(itemView.context, colorRes))
 
             // Set date
             dateTextView.text = formatDate(thought.date)

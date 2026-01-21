@@ -2,19 +2,23 @@
 <com.google.android.material.card.MaterialCardView 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/thoughtCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/card_background"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
-    app:strokeWidth="1.5dp"
-    app:strokeColor="@color/card_stroke"
+    style="@style/Widget.SecondBrain.Card"
     app:rippleColor="@color/ripple_color">
+
+    <!-- Gradient Overlay for subtle depth -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/glass_card_background"
+        android:alpha="0.2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,88 +26,110 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Header: Category icon + Date + Pin indicator -->
+        <!-- Top Row: Icon, Category, Date -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingBottom="4dp">
+            android:paddingBottom="8dp">
 
-            <!-- Category Icon - Custom shape per type -->
-            <ImageView
-                android:id="@+id/categoryIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_category_decision"
-                android:contentDescription="Category icon"/>
+            <!-- Category Icon Container with Glow -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                
+                <View
+                    android:id="@+id/categoryGlow"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle_shape"
+                    android:backgroundTint="@color/glass_overlay_medium"/>
 
-            <!-- Category Text -->
-            <TextView
-                android:id="@+id/categoryTextView"
+                <ImageView
+                    android:id="@+id/categoryIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_category_decision"
+                    android:contentDescription="Category icon"
+                    app:tint="@color/text_off_white"/>
+            </FrameLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:textColor="@color/text_secondary"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.05"
-                android:text="Decision"/>
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
 
-            <!-- Pin Indicator - More prominent -->
-            <TextView
+                <TextView
+                    android:id="@+id/categoryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"
+                    android:textAllCaps="true"
+                    tools:text="DECISION"/>
+                
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_tertiary"
+                    android:textSize="11sp"
+                    tools:text="Oct 24, 2023"/>
+            </LinearLayout>
+
+            <!-- Pin Indicator -->
+            <ImageView
                 android:id="@+id/pinnedIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pinned"
-                android:textColor="@color/primary_cyan"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:background="@drawable/rounded_bg"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                app:tint="@color/accent_pink"
                 android:visibility="gone"/>
-
-            <!-- Date -->
-            <TextView
-                android:id="@+id/dateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:textColor="@color/text_tertiary"
-                android:textSize="13sp"
-                android:text="Today"/>
 
         </LinearLayout>
 
-        <!-- Title (if exists) - Larger and bolder -->
+        <!-- Divider (Subtle) -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"
+            android:layout_marginVertical="8dp"
+            android:alpha="0.5"/>
+
+        <!-- Title -->
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="4dp"
             android:textColor="@color/text_off_white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:maxLines="1"
-            android:letterSpacing="0.01"
             android:ellipsize="end"
-            android:visibility="gone"/>
+            android:fontFamily="sans-serif-medium"
+            android:visibility="gone"
+            tools:text="Project Alpha Launch"/>
 
-        <!-- Main Thought Text with better readability -->
+        <!-- Content -->
         <TextView
             android:id="@+id/thoughtTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:textColor="@color/text_primary"
-            android:textSize="16sp"
-            android:lineSpacingMultiplier="1.5"
-            android:maxLines="3"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4dp"
+            android:maxLines="4"
             android:ellipsize="end"
-            android:alpha="0.95"
-            android:text="This is a sample thought that might be longer..."/>
+            tools:text="The strategy needs to be revised to include the new market analysis data..."/>
 
     </LinearLayout>
 
