@@ -329,17 +329,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDeleteConfirmation(thought: Thought) {
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.delete_title))
-            .setMessage(getString(R.string.delete_message))
-            .setPositiveButton(getString(R.string.yes)) { _, _ ->
-                lifecycleScope.launch {
-                    database.thoughtDao().delete(thought)
-                    performHapticFeedback()
-                }
+        val dialogView = layoutInflater.inflate(R.layout.dialog_delete_confirmation, null)
+        
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+            
+        // Make background transparent for rounded corners
+        dialog.window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT))
+        
+        val btnCancel = dialogView.findViewById<View>(R.id.btnCancel)
+        val btnConfirmDelete = dialogView.findViewById<View>(R.id.btnConfirmDelete)
+        
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        
+        btnConfirmDelete.setOnClickListener {
+            dialog.dismiss()
+            lifecycleScope.launch {
+                database.thoughtDao().delete(thought)
+                performHapticFeedback()
             }
-            .setNegativeButton(getString(R.string.cancel), null)
-            .show()
+        }
+        
+        dialog.show()
     }
 
     private fun setupBannerAd() {
