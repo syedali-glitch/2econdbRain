@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Glass background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/card_background" />
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+    
+    <!-- Subtle gradient overlay for depth -->
+    <item android:top="0dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:startColor="@color/glass_overlay"
+                android:endColor="#00FFFFFF"
+                android:type="linear" />
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+    
+    <!-- Border -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1.5dp"
+                android:color="@color/card_stroke" />
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+</layer-list>

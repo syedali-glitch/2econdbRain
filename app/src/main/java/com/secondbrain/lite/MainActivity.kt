@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var thoughtsRecyclerView: RecyclerView
     private lateinit var searchEditText: TextInputEditText
     private lateinit var addThoughtFab: FloatingActionButton
+    private lateinit var emptyStateContainer: LinearLayout
     private lateinit var emptyStateTextView: TextView
     private lateinit var bannerAdContainer: FrameLayout
     
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         thoughtsRecyclerView = findViewById(R.id.thoughtsRecyclerView)
         searchEditText = findViewById(R.id.searchEditText)
         addThoughtFab = findViewById(R.id.addThoughtFab)
+        emptyStateContainer = findViewById(R.id.emptyStateContainer)
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
         bannerAdContainer = findViewById(R.id.bannerAdContainer)
         
@@ -88,7 +90,28 @@ class MainActivity : AppCompatActivity() {
             }
         }
         
-        // Setup FAB
+        // Setup FAB with animations
+        addThoughtFab.setOnTouchListener { view, event ->
+            when (event.action) {
+                android.view.MotionEvent.ACTION_DOWN -> {
+                    view.animate()
+                        .scaleX(0.92f)
+                        .scaleY(0.92f)
+                        .setDuration(150)
+                        .start()
+                }
+                android.view.MotionEvent.ACTION_UP,
+                android.view.MotionEvent.ACTION_CANCEL -> {
+                    view.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(150)
+                        .start()
+                }
+            }
+            false
+        }
+        
         addThoughtFab.setOnClickListener {
             startActivity(Intent(this, AddThoughtActivity::class.java))
         }
@@ -108,12 +131,19 @@ class MainActivity : AppCompatActivity() {
             database.thoughtDao().getAllThoughts().collectLatest { thoughts ->
                 thoughtAdapter.submitList(thoughts)
                 
-                // Show/hide empty state
+                // Show/hide empty state with animation
                 if (thoughts.isEmpty()) {
-                    emptyStateTextView.visibility = View.VISIBLE
                     thoughtsRecyclerView.visibility = View.GONE
+                    emptyStateContainer.apply {
+                        visibility = View.VISIBLE
+                        alpha = 0f
+                        animate()
+                            .alpha(1f)
+                            .setDuration(300)
+                            .start()
+                    }
                 } else {
-                    emptyStateTextView.visibility = View.GONE
+                    emptyStateContainer.visibility = View.GONE
                     thoughtsRecyclerView.visibility = View.VISIBLE
                 }
             }
