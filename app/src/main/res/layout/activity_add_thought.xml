@@ -13,16 +13,56 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Header -->
-        <TextView
-            android:id="@+id/headerTextView"
-            android:layout_width="wrap_content"
+        <!-- Header & Category Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_thought_title"
-            android:textColor="@color/text_off_white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/headerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_thought_title"
+                android:textColor="@color/text_off_white"
+                android:textSize="28sp"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!-- Category Dropdown -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/categoryInputLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/primary_soft_blue"
+                app:boxStrokeWidth="0dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:endIconTint="@color/primary_soft_blue">
+
+                <AutoCompleteTextView
+                    android:id="@+id/categoryAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="Decision"
+                    android:textColor="@color/text_secondary"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical|end"
+                    android:paddingEnd="0dp"
+                    android:cursorVisible="false"
+                    android:focusable="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <!-- Title Input (Optional) -->
         <com.google.android.material.textfield.TextInputLayout
@@ -48,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.SecondBrain.TextInputLayout"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="32dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/thoughtEditText"
@@ -57,62 +97,12 @@
                 android:hint="@string/hint_main_thought"
                 android:textColor="@color/text_off_white"
                 android:textColorHint="@color/text_secondary"
-                android:minLines="5"
-                android:maxLines="10"
+                android:minLines="8"
+                android:maxLines="15"
                 android:gravity="top"
                 android:inputType="textMultiLine|textCapSentences"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Category Label -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/category_label"
-            android:textColor="@color/text_off_white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="12dp"/>
-
-        <!-- Category Selection -->
-        <RadioGroup
-            android:id="@+id/categoryRadioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp">
-
-            <RadioButton
-                android:id="@+id/decisionRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/category_decision"
-                android:textColor="@color/text_off_white"
-                android:textSize="15sp"
-                android:checked="true"
-                android:buttonTint="@color/category_decision"
-                android:paddingVertical="8dp"/>
-
-            <RadioButton
-                android:id="@+id/lessonRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/category_lesson"
-                android:textColor="@color/text_off_white"
-                android:textSize="15sp"
-                android:buttonTint="@color/category_lesson"
-                android:paddingVertical="8dp"/>
-
-            <RadioButton
-                android:id="@+id/reflectionRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/category_reflection"
-                android:textColor="@color/text_off_white"
-                android:textSize="15sp"
-                android:buttonTint="@color/category_reflection"
-                android:paddingVertical="8dp"/>
-
-        </RadioGroup>
 
         <!-- Save Button -->
         <com.google.android.material.button.MaterialButton
